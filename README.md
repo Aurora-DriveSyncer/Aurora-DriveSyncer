@@ -1,5 +1,8 @@
 # Aurora-DriveSyncer
 
+![logo](https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer/raw/master/img/logo.png)
+
+
 ## 扩展要求
 
 各项目组根据自身情况自行选择扩展要求(对应扩展分)。
