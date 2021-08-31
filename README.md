@@ -33,8 +33,9 @@ Aurora
 ## REST API
 
 1. GET `/api/list/` 获取指定文件夹中的内容及同步状态
-2. GET `/api/syncing/` 获取正在同步的位置
-3. GET & PUT `/api/config/` 显示和修改同步配置
+2. GET `/api/download/` 从备份服务器下载文件
+3. GET `/api/syncing/` 获取正在同步的位置
+4. GET & PUT `/api/config/` 显示和修改同步配置
 
 ## 前端
 
@@ -50,7 +51,7 @@ Aurora
 
 ## 后端
 
-1. 上述三个 API 以及对应的 swagger
+1. 上述四个 API 以及对应的 swagger
 2. ftp/webdav 登录/上传/删除
 3. 加密解密
 4. 压缩解压
