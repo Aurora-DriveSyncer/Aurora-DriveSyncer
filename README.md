@@ -52,6 +52,17 @@
 * 后端：部署在同步机本地 `localhost:18080`，监听文件变化；对文件服务器加密、压缩、传输文件；对前端提供 REST API
 * 文件服务器：部署在远端 `localhost:28080`，ftp/webdav
 
+## 部署方法
+
+```
+mkdir Aurora-DriveSyncer && cd Aurora-DriveSyncer
+git clone https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer
+git clone https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer-frontend
+git clone https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer-backend
+cd Aurora-DriveSyncer
+docker-compose up --build
+```
+
 ## REST API
 
 1. GET `/api/list/` 获取指定文件夹中的内容及同步状态
