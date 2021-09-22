@@ -1,17 +1,24 @@
 version: "3.9"
 services:
-  backend:
-    build: ../Aurora-DriveSyncer-backend
+  ftp:
+    image: fauria/vsftpd
+    environment:
+      FTP_USER: "user"
+      FTP_PASS: "user"
+      # LOG_STDOUT: "1"
+      PASV_MIN_PORT: "21000"
+      PASV_MAX_PORT: "21010"
+      PASV_ADDRESS: "127.0.0.1"
+      REVERSE_LOOKUP_ENABLE: "NO"
     ports:
-      - "9091:9091"
+      - "20-21:20-21"
+      - "21000-21010:21000-21010"
+    restart: always
   frontend:
     build: ../Aurora-DriveSyncer-frontend
     ports:
       - "3000:3000"
-  ftp:
-    image: delfer/alpine-ftp-server
-    environment:
-      USERS: "SA|"
+  backend:
+    build: ../Aurora-DriveSyncer-backend
     ports:
-      - "21:21"
-      - "21000-21010:21000-21010"
+      - "9091:9091"
