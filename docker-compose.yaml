@@ -1,24 +1,32 @@
 version: "3.9"
 services:
-  ftp:
-    image: fauria/vsftpd
+  # ftp:
+  #   image: fauria/vsftpd
+  #   environment:
+  #     FTP_USER: "user"
+  #     FTP_PASS: "user"
+  #     # LOG_STDOUT: "1"
+  #     PASV_MIN_PORT: "21000"
+  #     PASV_MAX_PORT: "21010"
+  #     PASV_ADDRESS: "127.0.0.1"
+  #     REVERSE_LOOKUP_ENABLE: "NO"
+  #   ports:
+  #     - "20-21:20-21"
+  #     - "21000-21010:21000-21010"
+  #   restart: always
+  webdav:
+    image: morrisjobke/webdav
     environment:
-      FTP_USER: "user"
-      FTP_PASS: "user"
-      # LOG_STDOUT: "1"
-      PASV_MIN_PORT: "21000"
-      PASV_MAX_PORT: "21010"
-      PASV_ADDRESS: "127.0.0.1"
-      REVERSE_LOOKUP_ENABLE: "NO"
+      USERNAME: "user"
+      PASSWORD: "user"
     ports:
-      - "20-21:20-21"
-      - "21000-21010:21000-21010"
+      - "8888:80"
     restart: always
   frontend:
-    build: ../Aurora-DriveSyncer-frontend
+    build: https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer-frontend.git
     ports:
       - "3000:3000"
   backend:
-    build: ../Aurora-DriveSyncer-backend
+    build: https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer-backend.git
     ports:
       - "9091:9091"

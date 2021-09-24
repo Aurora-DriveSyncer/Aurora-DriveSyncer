@@ -50,24 +50,20 @@
 
 * 前端：部署在同步机本地 `localhost:3000`。显示同步状态、修改同步配置等
 * 后端：部署在同步机本地 `localhost:9091`，监听文件变化；对文件服务器加密、压缩、传输文件；对前端提供 REST API
-* 文件服务器：可部署在本地或远端（实际测试时部署在 `localhost:20-21`），ftp/webdav
+* 文件服务器：可部署在本地或远端（实际测试时部署在 `localhost:8888`），ftp/webdav
 
 ## 部署方法
 
 ```
-mkdir Aurora-DriveSyncer && cd Aurora-DriveSyncer
-git clone https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer
-git clone https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer-frontend
-git clone https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer-backend
-cd Aurora-DriveSyncer
+git clone https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer && cd Aurora-DriveSyncer
 docker-compose up --build
 ```
 
 ## REST API
 
 1. GET `/api/list/` 获取指定文件夹中的内容及同步状态
-2. GET `/api/download/` 从备份服务器下载文件
-3. GET `/api/syncing/` 获取正在同步的位置
+2. GET `/api/restore/?path=` 从备份服务器恢复文件，目标路径写在 `params` 里
+3. GET `/api/syncing/` 获取正在上传的文件
 4. GET & PUT `/api/config/` 显示和修改同步配置
 
 ## 前端
@@ -89,5 +85,4 @@ docker-compose up --build
 3. 加密解密
 4. 压缩解压
 5. 计算 hash
-6. 监听文件增/删/移动
-
+6. 监听文件增/删/改
