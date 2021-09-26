@@ -2,6 +2,25 @@
 
 ![logo](https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer/raw/master/img/logo.png)
 
+## 部署方法
+
+```
+git clone https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer && cd Aurora-DriveSyncer
+docker-compose up --build
+```
+
+如使用上述方法部署，在填写 Aurora 备份配置时推荐使用一下配置：
+
+```json
+{
+    "filePassword": "233",
+    "localPath": ".",
+    "password": "user",
+    "url": "http://webdav/webdav/",
+    "username": "user"
+}
+```
+
 ## 实验难度分级和评分标准
 
 ### 基本要求
@@ -28,7 +47,7 @@
 
 ### 开发环境
 
-* 操作系统选择:Linux/Mac/**Windows**
+* 操作系统选择:**Linux**/Mac/Windows
 * 开发语言选择:C++/**Java**/Go/Dart。若选择脚本语言，小组基础分扣10分。
 * 库的使用:对所有扩展功能，如果使用第三方库/代码实现，只能获得最低扩展分。
 
@@ -46,27 +65,22 @@
 * 组长得分=小组得分(不超过100分)
 * 组员得分=小组得分-5(不超过100分)
 
+
+
 ## 技术架构
 
 * 前端：部署在同步机本地 `localhost:3000`。显示同步状态、修改同步配置等
 * 后端：部署在同步机本地 `localhost:9091`，监听文件变化；对文件服务器加密、压缩、传输文件；对前端提供 REST API
-* 文件服务器：可部署在本地或远端（实际测试时部署在 `localhost:8888`），ftp/webdav
+* 文件服务器：可部署在本地或远端（实际测试时部署在 `localhost:8888`），webdav
 
-## 部署方法
-
-```
-git clone https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer && cd Aurora-DriveSyncer
-docker-compose up --build
-```
-
-## REST API
+### REST API
 
 1. GET `/api/list/` 获取指定文件夹中的内容及同步状态
 2. GET `/api/restore/?path=` 从备份服务器恢复文件，目标路径写在 `params` 里
 3. GET `/api/syncing/` 获取正在上传的文件
 4. GET & PUT `/api/config/` 显示和修改同步配置
 
-## 前端
+### 前端
 
 三个页面：
 
@@ -78,10 +92,10 @@ docker-compose up --build
 
 ![file-explorer](https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer/raw/master/img/file-explorer.jpg)
 
-## 后端
+### 后端
 
 1. 上述四个 API 以及对应的 swagger
-2. ftp/webdav 登录/上传/删除
+2. ftp/webdav 登录/上传/删除/下载
 3. 加密解密
 4. 压缩解压
 5. 计算 hash
