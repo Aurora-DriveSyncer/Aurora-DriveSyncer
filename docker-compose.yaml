@@ -23,10 +23,10 @@ services:
       - "8888:80"
     restart: always
   frontend:
-    build: https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer-frontend.git
+    build: ../Aurora-DriveSyncer-frontend
     ports:
       - "3000:3000"
   backend:
-    build: https://github.com/Aurora-DriveSyncer/Aurora-DriveSyncer-backend.git
+    build: ../Aurora-DriveSyncer-backend
     ports:
       - "9091:9091"
